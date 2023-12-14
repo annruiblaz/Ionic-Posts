@@ -1,0 +1,84 @@
+<ion-header [translucent]="true">
+  <ion-toolbar>
+    <ion-title>inicio</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content [fullscreen]="true">
+  <!-- Refresher -->
+  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+
+  <div class="container">
+
+    <!-- Card -->
+   <ion-list *ngIf="skeleton">
+     <ion-card mode="ios" *ngFor="let post of infoPost">
+       <ion-card-header>
+         <ion-text color="primary" class="ion-text-uppercase">
+           <h1>{{post.title}}</h1>
+         </ion-text>
+       </ion-card-header>
+       <ion-card-content>
+         <h5>UserId: {{post.userId}} | Id: {{post.id}}</h5>
+         <br>
+         <p>{{post.body}}</p>
+       </ion-card-content>
+
+       <!-- Popoveer -->
+       <div class="center">
+          <ion-button (click)="openPopover(post)" type="button" shape="round" size="large" id="pop" color="success">Popover</ion-button>
+        </div>
+       <!-- <ion-popover trigger="pop">
+        <ng-template>
+          <ion-content class="ion-padding">
+               <ion-accordion-group>
+              <ion-accordion value="first">
+                  <ion-item slot="header" color="light">
+                    <ion-label>First Accordion</ion-label>
+                  </ion-item>
+                  <div class="ion-padding" slot="content">First Content</div>
+                </ion-accordion>
+            </ion-accordion-group>
+           </ion-content>
+         </ng-template>
+       </ion-popover> -->
+
+
+
+     </ion-card>
+   </ion-list>
+
+    <!--Skeletooon-->
+    <ion-list *ngIf="infoPost.length > 0 && !skeleton">
+      <ion-card *ngFor="let post of infoPost">
+        <ion-card-header  class="animate__animated animate__fadeIn">
+          <h1>
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </h1>
+        </ion-card-header>
+        <ion-card-content  class="animate__animated animate__fadeIn">
+          <h5>
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </h5>
+          <br>
+          <p>
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+          </p>
+        </ion-card-content>
+
+        <div class="center">
+          <ion-button class="animate__animated animate__fadeIn" color="success" shape="round">
+            <ion-skeleton-text [animated]="true"></ion-skeleton-text>
+
+          </ion-button>
+
+        </div>
+      </ion-card>
+    </ion-list>
+
+  </div>
+</ion-content>

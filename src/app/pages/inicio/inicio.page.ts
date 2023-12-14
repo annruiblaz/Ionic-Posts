@@ -16,7 +16,7 @@ export class InicioPage implements OnInit {
   title = '';
   message = '';
 
-  constructor(private dataService: DataService, public popoverController: PopoverController) { }
+  constructor(private dataService: DataService, private popoverController: PopoverController) { }
 
   ngOnInit() {
     this.cargarPosts();
@@ -43,7 +43,6 @@ export class InicioPage implements OnInit {
   //Refresher
   doRefresh(event: any){
     setTimeout(() => {
-    //  this.infoPost.push(...Array(10));
       this.skeleton = true;
       event.target.complete();
     }, 1000);

@@ -3,6 +3,7 @@ import {DataService} from "../../services/data.service";
 import {Post} from "../../common/interfaces";
 import {PopoverController} from "@ionic/angular";
 import {idCard} from "ionicons/icons";
+import {PopoverContentPage} from "../popover-content/popover-content.page";
 
 @Component({
   selector: 'app-inicio',
@@ -47,7 +48,6 @@ export class InicioPage implements OnInit {
       event.target.complete();
     }, 1000);
     this.skeleton = false;
-    console.log('REgresejd acabado')
   }
 
 
@@ -56,7 +56,7 @@ export class InicioPage implements OnInit {
   async presentPopover(post: Post){
     const popover = await this.popoverController.create(
       {
-        component: InicioPage,
+        component: PopoverContentPage,
         componentProps:{
           title: post.title,
           message: post.body,
@@ -65,24 +65,5 @@ export class InicioPage implements OnInit {
     );
     return await  popover.present();
   }
- /* async presentPopover(e: Event){
-    const popover = await this.popoverController.create({
-      component: InicioPage,
-      event: e,
-      componentProps: {
-        titulo: this.title,
-        mensaje: this.message,
-      },
-      side: "bottom",
-      alignment: "center"
-    });
 
-    await popover.present();
-
-    const result = await popover.onDidDismiss();
-    // if(result.data){
-    //   this.title = 'Dunciona';
-    //   this.message = 'Pepe';
-    // }
-  }*/
 }

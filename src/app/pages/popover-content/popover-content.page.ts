@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-popover-content',
@@ -7,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 export class PopoverContentPage implements OnInit {
 
+  @Input() title!: string;
+  @Input() message!: string;
   constructor() { }
 
   ngOnInit() {

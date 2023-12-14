@@ -1,16 +1,15 @@
-<ion-header [translucent]="true">
+<ion-header collapse="fade" mode="ios" [translucent]="true">
   <ion-toolbar>
-    <ion-title>inicio</ion-title>
+    <ion-title>Posts App :)</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <!-- Refresher -->
-  <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
-    <ion-refresher-content></ion-refresher-content>
-  </ion-refresher>
-
   <div class="container">
+    <!-- Refresher -->
+    <ion-refresher slot="fixed" (ionRefresh)="doRefresh($event)">
+      <ion-refresher-content></ion-refresher-content>
+    </ion-refresher>
 
     <!-- Card -->
    <ion-list *ngIf="skeleton">
@@ -28,25 +27,8 @@
 
        <!-- Popoveer -->
        <div class="center">
-          <ion-button (click)="openPopover(post)" type="button" shape="round" size="large" id="pop" color="success">Popover</ion-button>
+          <ion-button (click)="presentPopover(post)" type="button" shape="round" size="large" id="pop" color="success">Popover</ion-button>
         </div>
-       <!-- <ion-popover trigger="pop">
-        <ng-template>
-          <ion-content class="ion-padding">
-               <ion-accordion-group>
-              <ion-accordion value="first">
-                  <ion-item slot="header" color="light">
-                    <ion-label>First Accordion</ion-label>
-                  </ion-item>
-                  <div class="ion-padding" slot="content">First Content</div>
-                </ion-accordion>
-            </ion-accordion-group>
-           </ion-content>
-         </ng-template>
-       </ion-popover> -->
-
-
-
      </ion-card>
    </ion-list>
 
